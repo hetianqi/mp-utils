@@ -188,21 +188,30 @@ export function getScrollbarWidth(isBody) {
 	}
 }
 
-let originalBodyOverflow;
-let originalBodyPaddingRight;
-export function toggleBodyOverflow(show) {    
-	const body = document.body;
-	let bodyIsOverflowing = body.clientWidth < window.innerWidth;
+const toggleOverflowMap = [];
+export function toggleOverflow(show, ele = document.body) {
+	let cache = toggleOverflowMap.find(a => a.ele === ele);
+
+	if (!cache) {
+		cache = {
+			ele: ele,
+			originalPaddingRight: '',
+			originalOverflow: ''
+		};
+		toggleOverflowMap.push(cache);
+	}
+
 	if (show) {
-		originalBodyPaddingRight = body.style.paddingRight || '';
-		originalBodyOverflow = body.style.overflow || '';
-		let bodyPaddingRight = parseInt((originalBodyPaddingRight || 0), 10);
-		if (bodyIsOverflowing) {
-			body.style.paddingRight = `${bodyPaddingRight + getScrollbarWidth()}px`;
-			body.style.overflow = 'hidden';
+		cache.originalPaddingRight = getStyle(ele, 'padding-right') || '';
+		cache.originalOverflow = getStyle(ele, 'overflow-y') || '';
+		let isOverflow = ele.clientWidth < ele.offsetWidth;
+		let paddingRight = parseInt((cache.originalPaddingRight || 0), 10);
+		if (isOverflow) {
+			ele.style.paddingRight = `${paddingRight + getScrollbarWidth()}px`;
+			ele.style.overflow = 'hidden';
 		}
 	} else {
-		body.style.paddingRight = originalBodyPaddingRight;
-		body.style.overflow = originalBodyOverflow;
+		ele.style.paddingRight = cache.originalPaddingRight;
+		ele.style.overflow = cache.originalOverflow;
 	}
 }
