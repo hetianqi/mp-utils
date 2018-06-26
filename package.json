@@ -4,7 +4,9 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "src"
+    "libs",
+    "components",
+    "services"
   ],
   "repository": "https://github.com/hetianqi/mpit-utils",
   "author": "hetianqi <449165578@qq.com>",
