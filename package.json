@@ -1,0 +1,15 @@
+{
+  "name": "mpit-utils",
+  "version": "0.0.1",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "src"
+  ],
+  "repository": "https://github.com/hetianqi/mpit-utils",
+  "author": "hetianqi <449165578@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
