@@ -1,9 +1,1 @@
-import * as utils from './src/utils';
-import * as domUtils from './src/dom-utils';
-import http from './src/http';
-
-export {
-    utils,
-    domUtils,
-    http
-};
+throw new Error('请指定具体文件路径，如libs/utils');
