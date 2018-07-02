@@ -81,6 +81,7 @@ export default {
 
 <style lang="scss">
 .block {
+	display: flex;
 	margin-bottom: 20px;
 	box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
 	background-color: #fff;
@@ -130,6 +131,7 @@ export default {
 	padding: 15px 0;
 }
 .block-body {
+	flex: 1;
 	padding: 20px;
 }
 </style>
