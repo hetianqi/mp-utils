@@ -8,8 +8,8 @@
     "components",
     "services"
   ],
-  "repository": "https://github.com/hetianqi/mpit-utils",
-  "author": "hetianqi <449165578@qq.com>",
+  "repository": "https://github.com/mp-it-dev/mpit-utils",
+  "author": "mpit<mpit@mail.maipu.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0"
