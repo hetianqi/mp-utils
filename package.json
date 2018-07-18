@@ -1,17 +1,17 @@
 {
-  "name": "mpit-utils",
-  "version": "0.0.7",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "libs",
-    "components",
-    "services"
-  ],
-  "repository": "https://github.com/mp-it-dev/mpit-utils",
-  "author": "mpit<mpit@mail.maipu.com>",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.18.0"
-  }
+    "name": "mpit-utils",
+    "version": "0.0.8",
+    "main": "index.js",
+    "files": [
+        "index.js",
+        "libs",
+        "components",
+        "services"
+    ],
+    "repository": "https://github.com/mp-it-dev/mpit-utils",
+    "author": "mpit<mpit@mail.maipu.com>",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.18.0"
+    }
 }
