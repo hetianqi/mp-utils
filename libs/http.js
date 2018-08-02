@@ -83,6 +83,10 @@ function jsonpAdapter(config) {
 	});
 }
 
+axios.defaults.headers.get['Cache-Control'] = 'no-cache';
+axios.defaults.headers.get['If-Modified-Since'] = 0;
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 axios.jsonp = axios.create({
 	adapter: jsonpAdapter
 });
