@@ -82,6 +82,7 @@ export default {
 <style lang="scss">
 .block {
 	display: flex;
+	flex-direction: column;
 	margin-bottom: 20px;
 	box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
 	background-color: #fff;
