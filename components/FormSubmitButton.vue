@@ -30,6 +30,10 @@ export default {
         innerText:{
             type:String,
             default:false,
+        },
+        tableIndex:{//因为element在table有冻结窗口的情况下会生成两个table，所以此参数用来控制导出时导出的table
+            type:Boolean,
+            default:false,
         }
     },
     data(){
@@ -39,7 +43,12 @@ export default {
     },
     methods: {
         formSubmit(){
-            this.tableHtml=document.getElementById(this.tableId).getElementsByTagName('table')[0].outerHTML+document.getElementById(this.tableId).getElementsByTagName('table')[1].outerHTML;
+            if(!this.tableIndex){
+                this.tableHtml=document.getElementById(this.tableId).outerHTML;
+            }else{
+                this.tableHtml=document.getElementById(this.tableId).getElementsByTagName('table')[0].outerHTML+document.getElementById(this.tableId).getElementsByTagName('table')[1].outerHTML;                
+            }
+
             setTimeout(() => {
                 this.$refs.formDom.submit();
             }, 300);            

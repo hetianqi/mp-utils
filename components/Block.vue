@@ -131,7 +131,7 @@ export default {
 	padding: 15px 0;
 }
 .block-body {
-	flex: 1;
+	flex-shrink: 1;
 	padding: 20px;
 }
 </style>

@@ -9,7 +9,7 @@ import Panel from './Panel';
 import PushModal from './PushModal';
 import Row from './Row';
 import Sider from './Sider';
-
+import FormSubmitButton from './FormSubmitButton';
 export default {
 	install(Vue) {		
 		Vue.component(Block.name, Block);
@@ -23,5 +23,6 @@ export default {
 		Vue.component(PushModal.name, PushModal);
 		Vue.component(Row.name, Row);
 		Vue.component(Sider.name, Sider);
+		Vue.component(FormSubmitButton.name, FormSubmitButton);
 	}
 };
