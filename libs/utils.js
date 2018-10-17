@@ -86,7 +86,7 @@ export function formatDate(date, format) {
 		'M+': date.getMonth() + 1, // 月
 		'd+': date.getDate(), // 天 
 		'h+': date.getHours() % 12, // 小时，12小时制
-		'H+': date.getHours(), // 小时，24小时制 
+		'H+': date.getHours()+8, // 小时，24小时制 
 		'm+': date.getMinutes(), // 分钟
 		's+': date.getSeconds(), // 秒钟
 		'S': date.getMilliseconds() // 毫秒
