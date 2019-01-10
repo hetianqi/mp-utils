@@ -6,21 +6,31 @@
 			</h2>
 			<div class="block-tabs" v-else-if="tabs.length">
 				<span class="block-tab-active-bar" :style="activeBarStyle"></span>
-				<span
-					class="block-tab-item"
-					v-for="tab in tabs"
-					:key="tab"
-					:class="{'active': tab === activeTabInner}"
-					ref="tabItems"
-					@click.prevent.stop="handleTabClick(tab)">{{tab}}</span>
+				<span class="block-tab-item"
+					  v-for="tab in tabs"
+					  :key="tab"
+					  :class="{'active': tab === activeTabInner}"
+					  ref="tabItems"
+					  @click.prevent.stop="handleTabClick(tab)">{{tab}}</span>
 			</div>
-			<div class="block-action" v-if="!!$slots.action">
-				<slot name="action"></slot>
+			<div class="block-action" v-if="!!$slots.action||hasExpand">
+				<div class="block-slot" v-if="!!$slots.action">
+					<slot name="action"></slot>
+				</div>
+				<div v-if="hasExpand" 
+					 class="block-expand"  
+					 @click="bodyShowFn()">
+					<i class="el-icon-arrow-right" 
+						:title="bodyShow?'点击收起':'点击展开'"
+					   :class="{ block_expand_open:bodyShow,block_expand_close:!bodyShow }"></i>
+				</div>
 			</div>
 		</div>
-		<div class="block-body">
-			<slot></slot>
-		</div>
+		<el-collapse-transition>
+			<div class="block-body" v-show="bodyShow">
+				<slot class="transition-box"></slot>
+			</div>
+		</el-collapse-transition>
 	</section>
 </template>
 
@@ -35,7 +45,15 @@ export default {
 				return [];
 			}
 		},
-		activeTab: String
+		hasExpand:{
+			type:Boolean,
+			default:true
+		},
+		activeTab: String,
+		isBodyShow:{
+			type:Boolean,
+			default:true
+		},
 	},
 	data() {
 		return {
@@ -43,11 +61,13 @@ export default {
 			activeBarStyle: {
 				width: '',
 				transform: ''
-			}
+			},
+			bodyShow:true,
 		};
 	},
 	mounted() {
 		this.setTabActiveBar();
+		this.bodyShow=this.isBodyShow
 	},
 	watch: {
 		activeTab(v) {
@@ -74,6 +94,11 @@ export default {
 			});
 			this.activeBarStyle.width = width + 'px';
 			this.activeBarStyle.transform = `translateX(${leftPos}px)`;
+		},
+		bodyShowFn(){
+			if (this.hasExpand) {
+				this.bodyShow=!this.bodyShow;
+			}
 		}
 	}
 };
@@ -135,4 +160,23 @@ export default {
 	flex-shrink: 1;
 	padding: 20px;
 }
+.block-expand{
+	float: right;
+	line-height:32px;
+	//font-size:24px;
+	cursor:pointer;
+	margin-left: 30px;
+}
+.block-slot{
+	display:inline-block;
+	line-height:32px;
+}
+	.block_expand_open {
+		transform: rotate(90deg);
+		transition: all 0.4s ease-in-out;
+	}
+	.block_expand_close {
+		transform: rotate(0deg);
+		transition: all 0.4s ease-in-out;
+	}
 </style>
