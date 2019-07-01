@@ -2,7 +2,17 @@
 	<section class="block">
 		<div class="block-header" v-if="title || !!$slots.title || tabs.length || !!$slots.action">
 			<h2 class="block-title" v-if="title || !!$slots.title">
-				<slot name="title">{{title}}</slot>
+				<div v-if="hasExpand" 
+					 class="block-expand"  
+					 @click="bodyShowFn()">
+					<i class="fa fa-angle-double-right" 
+						:title="bodyShow?'点击收起':'点击展开'"
+					   :class="{ block_expand_open:bodyShow,block_expand_close:!bodyShow }"></i>
+				</div>
+				<span @click="bodyShowFn()" style="cursor:pointer">
+					<slot  name="title">{{title}}</slot>
+				</span>
+				
 			</h2>
 			<div class="block-tabs" v-else-if="tabs.length">
 				<span class="block-tab-active-bar" :style="activeBarStyle"></span>
@@ -16,14 +26,7 @@
 			<div class="block-action" v-if="!!$slots.action||hasExpand">
 				<div class="block-slot" v-if="!!$slots.action">
 					<slot name="action"></slot>
-				</div>
-				<div v-if="hasExpand" 
-					 class="block-expand"  
-					 @click="bodyShowFn()">
-					<i class="el-icon-arrow-right" 
-						:title="bodyShow?'点击收起':'点击展开'"
-					   :class="{ block_expand_open:bodyShow,block_expand_close:!bodyShow }"></i>
-				</div>
+				</div>				
 			</div>
 		</div>
 		<el-collapse-transition>
@@ -109,7 +112,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 20px;
-	box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
+	box-shadow: 0 0 5px 1px rgba(54, 54, 54, 0.3);
 	background-color: #fff;
 }
 .block-header {
@@ -161,11 +164,12 @@ export default {
 	padding: 20px;
 }
 .block-expand{
-	float: right;
-	line-height:32px;
-	//font-size:24px;
+	float: left;
+	line-height:30px;
+	font-size:20px;
 	cursor:pointer;
-	margin-left: 30px;
+	margin-right: 10px;
+	//margin-left: 30px;
 }
 .block-slot{
 	display:inline-block;
