@@ -27,6 +27,14 @@ export default {
 			required: true
 		}
 	},
+	watch: {
+		pageSize(val) {
+			this.pageSizeInner = val;
+		},
+		pageIndex(val) {
+			this.pageIndexInner = val;
+		}
+	},
 	data() {
 		return {
 			pageSizes: [this.pageSize, this.pageSize * 2, this.pageSize * 4, this.pageSize * 8],
