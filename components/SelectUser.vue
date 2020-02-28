@@ -7,7 +7,8 @@
 			   clearable
 			   value-key="Badge"
 			   @change="resultChange"
-			   reserve-keyword
+			   @clear="clearFn"
+			   :reserve-keyword="reserveKeyword"
 			   placeholder="请输入姓名关键字或完整工号"
 			   :remote-method="remoteMethod"
 			   :loading="loading">
@@ -27,6 +28,10 @@
 		name: 'select-user',
 		props: {
 			multiple: {
+				type: Boolean,
+				default:false
+			},
+			reserveKeyword: {
 				type: Boolean,
 				default:false
 			},
@@ -60,14 +65,10 @@
 				}
 			},
 			resultChange() {
-				this.$emit("GetResultFn", this.resultData)
-				//if (this.multiple) {
-				//	this.$emit("GetResultFn", this.resultData)
-				//} else {
-				//	let resultData = this.options.filter(item => { item.Badge == this.resultData });
-				//	this.$emit("GetResultFn", resultData)
-				//}
-				
+				this.$emit("GetResultFn", this.resultData)				
+			},
+			clearFn() {
+				this.$emit("ClearFn")				
 			}
 		}
 
