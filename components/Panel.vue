@@ -6,8 +6,12 @@
 			@click="bodyShowFn()">
 				<slot name="title">{{title}}</slot>
 			</div>
-			<div class="panel-action" v-if="hasExpand">				
-				<div class="panel-expand"  
+			<div>	
+				<div  class="panel-action">
+				     <slot name="action"></slot>
+				</div>
+				<div class="panel-expand" 
+					 v-if="hasExpand" 
 					 @click="bodyShowFn()">
 					<i class="el-icon-arrow-right" 
 						:title="bodyShow?'点击收起':'点击展开'"
@@ -55,7 +59,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .panel {
 	margin-bottom: 20px;
 	border: 1px solid #ddd;
@@ -76,10 +80,14 @@ export default {
 .panel-body {
 	padding: 10px 20px;
 }
+.panel-action {
+	    display: inline-block;
+    margin-right: 20px;
+}
 .panel-expand{
 	float: right;
-	line-height:32px;
-	//font-size:24px;
+	/*line-height:32px;
+	font-size:24px;*/
 	cursor:pointer;
 	margin-left: 30px;
 }

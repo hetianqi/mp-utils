@@ -1,6 +1,6 @@
 {
     "name": "mpit-utils",
-	"version": "0.1.15",
+	"version": "0.1.16",
     "main": "index.js",
     "files": [
         "index.js",

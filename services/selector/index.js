@@ -240,10 +240,63 @@ let selector = {
 		});
 		return instance;
 	},
+	//选客户单位
+	singleCustomer(option) {
+		option = option || {};
+		if (!option.callback) {
+			throw new Error('请指定callback');
+		}
+		var instance = iframeDialog({
+			title: '客户',
+			width: '800px',
+			height: '500px',
+
+			header: '客户',
+			src: OP_CONFIG.rootUrl + 'Selector/Customer?origin=' + encodeURIComponent(window.location.protocol + '//' + window.location.host),
+
+			onLoad(evt) {
+				show(evt, option);
+				//let origUrl = window.location.protocol + '//' + window.location.host;
+
+				//show(evt, option, origUrl);
+			},
+			onClose: function () {
+				hide(option);
+			}
+		});
+		return instance;
+	},
+
+	// 选择客户联系人
+    singleContact (option) {
+		option = option || {};
+		if (option.customerNumber == '') {
+			throw new Error('请指定客户单位');
+		}
+		if (!option.callback) {
+			throw new Error('请指定callback');
+		}
+		var instance = iframeDialog({
+			title: '联系人',
+			width: '1000px',
+			height: '500px',
+			src: OP_CONFIG.rootUrl + 'Selector/Contact?origin=' + encodeURIComponent(window.location.protocol + '//' + window.location.host),
+
+			onLoad(evt) {
+				//let origUrl = window.location.protocol + '//' + window.location.host;
+				//show(evt, option, origUrl);
+				show(evt, option);
+			},
+			onClose: function () {
+				hide(option);
+			}
+		});
+		return instance;
+	}
 	// 关闭选择器
 	close(instance) {
 		iframeDialog.close(instance);
-	}
+	},
 };
 
 export default selector;

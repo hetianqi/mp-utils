@@ -39,6 +39,13 @@
 				type: Number,
 				default:0
 			},
+			resultList: {
+				type: Array,
+				default: () => {
+					return []
+				}
+			},
+
 		},
 		data() {
 			return {
@@ -50,7 +57,10 @@
 			}
 		},
 		created() {
-
+			if (this.resultList.length > 0) {
+				this.resultData = this.resultList;
+				this.options = this.resultList;
+			}
 		},
 		methods: {
 			remoteMethod(query) {
