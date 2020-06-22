@@ -297,6 +297,7 @@ let selector = {
 	close(instance) {
 		iframeDialog.close(instance);
 	},
+	
 };
 
 export default selector;
