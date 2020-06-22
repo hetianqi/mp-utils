@@ -292,7 +292,7 @@ let selector = {
 			}
 		});
 		return instance;
-	}
+	},
 	// 关闭选择器
 	close(instance) {
 		iframeDialog.close(instance);
