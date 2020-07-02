@@ -11,6 +11,7 @@ import Row from './Row';
 import Sider from './Sider';
 import FormSubmitButton from './FormSubmitButton';
 import SelectUser from './SelectUser';
+import Calendar from './Calendar';
 export default {
 	install(Vue) {		
 		Vue.component(Block.name, Block);
@@ -26,5 +27,6 @@ export default {
 		Vue.component(Sider.name, Sider);
 		Vue.component(FormSubmitButton.name, FormSubmitButton);
 		Vue.component(SelectUser.name, SelectUser);
+		Vue.component(Calendar.name, Calendar);
 	}
 };

@@ -73,7 +73,7 @@ export default {
 .loading {
 	position: absolute;
 	left: 0;
-	z-index: 2000;
+	z-index: 2100;
 	display: none;
 	justify-content: center;
 	justify-items: center;

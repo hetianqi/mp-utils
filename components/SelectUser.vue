@@ -58,7 +58,11 @@
 		},
 		created() {
 			if (this.resultList.length > 0) {
-				this.resultData = this.resultList;
+				if (this.multiple) {
+					this.resultData = this.resultList;
+				} else {
+					this.resultData = this.resultList[0];
+				}
 				this.options = this.resultList;
 			}
 		},
