@@ -170,3 +170,33 @@ export function copyObjValue(dest, src) {
 	}
 	return obj;
 }
+//el-table需要合并行时，list的变换
+export function GetSpanMethodList(spanRow, list) {
+	spanRow.forEach(obj => {
+		list[list.length - 1][obj + '_rowSpan'] = 1;
+		for (var i = list.length - 1; i > 0; i--) {
+			if (list[i][obj] == list[i - 1][obj]) {
+				list[i - 1][obj + '_rowSpan'] = list[i][obj + '_rowSpan'] + 1;
+				list[i][obj + '_rowSpan'] = 0;
+			} else {
+				list[i - 1][obj + '_rowSpan'] = 1;
+			}
+		}
+	});
+	return list
+}
+//el-table合并时的SpanMethod函数
+export function UtilSpanMethod(spanRow,{ row, column, rowIndex, columnIndex }) {
+	if (column.property && spanRow.indexOf(column.property) > -1) {
+		let rowspan = row[column.property + '_rowSpan'];
+		return {
+			rowspan: rowspan,
+			colspan: rowspan ? 1 : 0
+		};
+	} else {
+		return {
+			rowspan: 1,
+			colspan: 1
+		};
+	}
+}
