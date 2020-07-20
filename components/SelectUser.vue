@@ -45,6 +45,10 @@
 					return []
 				}
 			},
+			needLoff: {
+				type: String,
+				default:'N'
+			}
 
 		},
 		data() {
@@ -70,7 +74,7 @@
 			remoteMethod(query) {
 				if (query !== '') {
 					this.loading = true;
-					axios.jsonp(this.url+'/Organization/GetPeopleResult?depID=&jobID=&keyword=' + query).then(data => {
+					axios.jsonp(this.url + '/Organization/GetPeopleResult?needLoff=' + this.needLoff+'&depID=&jobID=&keyword=' + query).then(data => {
 						this.loading = false;
 						this.options = data.data;
 					})					
