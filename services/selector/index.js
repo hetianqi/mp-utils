@@ -100,6 +100,26 @@ let selector = {
 		});
 		return instance;
 	},
+	// CRM单部门
+	SingleCrmDep(option) {
+		option = option || {};
+		if (!option.callback) {
+			throw new Error('请指定callback');
+		}
+		let instance = iframeDialog({
+			title: '单部门',
+			width: '800px',
+			height: '480px',
+			src: this.rootUrl + 'Selector/SingleCrmDep?origin=' + encodeURIComponent(window.location.protocol + '//' + window.location.host),
+			onLoad(evt) {
+				show(evt, option);
+			},
+			onClose() {
+				hide(option);
+			}
+		});
+		return instance;
+	},
 	// 多部门
 	multiDep(option) {
 		option = option || {};
